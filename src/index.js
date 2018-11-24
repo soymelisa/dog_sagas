@@ -5,22 +5,22 @@ import App from './App';
 
 import { Provider } from 'react-redux'; 
 import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMIddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 
 import reducer from './redux';
 import { watcherSaga } from "./sagas";
 
 
-const SagaMIddleware = createSagaMIddleware();
-const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const SagaMiddleware = createSagaMiddleware();
+const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const store = createStore(reducer, 
-    compose(applyMiddleware(SagaMIddleware), reduxDevTools))
+    compose(applyMiddleware(SagaMiddleware), reduxDevTools));
 // el compose es
 // como segundo parámtero podemos pasar actions o hasta un arreglo vacío para tomar algo
 // el segundo argumento y +middlewares
 
-SagaMIddleware.run(watcherSaga);
+SagaMiddleware.run(watcherSaga);
 
 
 
